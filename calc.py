@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
         self.outputField.setFont(font)
         self.outputField.setFrameShape(QtWidgets.QFrame.Panel)
         self.outputField.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.outputField.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.outputField.setAlignment(QtCore.Qt.AlignLeft|QtCore.Qt.AlignLeading|QtCore.Qt.AlignVCenter)
         self.outputField.setObjectName("outputField")
 
         self.cButton = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.clearOutput())
@@ -202,7 +202,8 @@ class Ui_MainWindow(object):
     def calculateResult(self):
         try:
             screen = self.outputField.text()
-            self.outputField.setText(str(eval(screen)))
+            result = eval(screen)
+            self.outputField.setText(str(result))
         except:
             self.outputField.setText('ERROR')
         Ui_MainWindow.status = "finished"
